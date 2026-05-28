@@ -10,9 +10,9 @@ while True:
     print("4. Cảnh báo hàng tồn kho thấp")
     print("5. Thoát chương trình")
     print("--------------------------")
-    choice = int(input("Nhập lựa chọn của bạn: "))
+    choice = input("Nhập lựa chọn của bạn: ")
 # chức năng 1: xem báo cáo tồn kho
-    if choice == 1:
+    if choice == "1":
 
         print("\n===== BÁO CÁO TỒN KHO =====")
         print(f"Laptop: {laptop}")
@@ -39,7 +39,7 @@ while True:
             stars += "*"
         print(f"Tablet ({tablet}): {stars}")
 # chức năng 2: nhập kho
-    elif choice == 2:
+    elif choice == "2":
 
         print("\n1. Laptop")
         print("2. Phone")
@@ -73,7 +73,7 @@ while True:
             print("Mặt hàng không hợp lệ!")
 
 # chức năng 3: Xuất kho
-    elif choice == 3:
+    elif choice == "3":
 
         print("\n1. Laptop")
         print("2. Phone")
@@ -118,7 +118,7 @@ while True:
         else:
             print("Mặt hàng không hợp lệ!")
 # chức năng 4: Cảnh báo hàng tồn kho thấp
-    elif choice == 4:
+    elif choice == "4":
 
         print("\n===== CẢNH BÁO TỒN KHO =====")
 
@@ -131,7 +131,7 @@ while True:
         if tablet < 10:
             print(f"[CẢNH BÁO] Tablet sắp hết (Chỉ còn {tablet} sản phẩm)")
 # chức năng 5: thoát
-    elif choice == 5:
+    elif choice == "5":
 
         print("Thoát chương trình...")
         break
