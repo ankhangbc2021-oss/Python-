@@ -118,7 +118,7 @@ while True:
         while True:
             try:
                 exit_time = int(input("Nhập giờ ra: "))
-                if exit_time < 0 and exit_time > 24:
+                if not 0 <= exit_time <= 24:
                     print("Vui lòng nhập từ 0-24")
                     continue
             except ValueError:
@@ -126,15 +126,16 @@ while True:
                 continue
             break
 
-        if exit_time < entry_time:
-            print("[Lõi]: Giờ ra phải sau hoặc băng giờ vào!")
-            continue
-        else:
+        if exit_time > entry_time:
             total_price = (exit_time - entry_time) * 7500
             print(f"Tổng phí phải trả: {total_price:,}VNĐ")
 
             data = [item for item in data if item["id"] != id_resule]
             print(f"[Thành công]: Đã xóa xe ID {id_resule} thành công!")
+
+        else:
+            print("[Lỗi]: Giờ ra phải sau hoặc băng giờ vào!")
+            continue
 
     elif choice == "5":
         print("Đã thoát")
