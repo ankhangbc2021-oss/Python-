@@ -33,7 +33,7 @@ while True:
         while True:
             try:
                 type_int = int(
-                    input("\nNhập loại xe :\n1. (Xe máy)\n2. (Ô tô)\nBạn chọn?")
+                    input("\nNhập loại xe :\n1. (Xe máy)\n2. (Ô tô)\nBạn chọn(1-2)? ")
                 )
 
                 if type_int not in (1, 2):
@@ -126,7 +126,7 @@ while True:
                 continue
             break
 
-        if exit_time > entry_time:
+        if exit_time >= entry_time:
             total_price = (exit_time - entry_time) * 7500
             print(f"Tổng phí phải trả: {total_price:,}VNĐ")
 
@@ -134,7 +134,7 @@ while True:
             print(f"[Thành công]: Đã xóa xe ID {id_resule} thành công!")
 
         else:
-            print("[Lỗi]: Giờ ra phải sau hoặc băng giờ vào!")
+            print("[Lỗi]: Giờ ra phải sau hoặc bằng giờ vào!")
             continue
 
     elif choice == "5":
