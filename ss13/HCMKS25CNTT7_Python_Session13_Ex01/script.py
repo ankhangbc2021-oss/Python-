@@ -49,7 +49,7 @@ while True:
             try:
 
                 entry_time = int(input("Giờ vào (0-24): "))
-                if entry_time < 0 and entry_time > 24:
+                if not 0 <= entry_time <= 24:
                     print("Vui lòng nhập từ 0-24")
                     continue
             except ValueError:
