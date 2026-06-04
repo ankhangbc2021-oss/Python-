@@ -5,7 +5,7 @@ SRS - Smart Parking System
 # Data lưu trữ
 data = []
 # Menu
-id = 0
+id_ = 0
 
 while True:
     print(
@@ -22,7 +22,7 @@ while True:
 
     choice = input("Nhập lựa chọn của bạn (1-5): ")
     if choice == "1":
-        id += 1
+        id_ += 1
         plate = input("Nhập mã định danh xe: ").strip()
         list_item = [item for item in data if item["plate"] == plate]
         if list_item:
@@ -58,7 +58,7 @@ while True:
             break
 
         data.append(
-            {"id": id, "plate": plate, "type": type_int, "entry_time": entry_time}
+            {"id": id_, "plate": plate, "type": type_int, "entry_time": entry_time}
         )
         print(f"[Thành công]: Xe [{plate}] đã được đăng ký vào bãi")
 
