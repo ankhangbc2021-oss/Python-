@@ -40,6 +40,14 @@ while True:
                     print("Vui lòng chọn 1-2")
                     continue
 
+            except ValueError:
+                print("Vui lòng nhập số")
+                continue
+            break
+
+        while True:
+            try:
+
                 entry_time = int(input("Giờ vào (0-24): "))
                 if entry_time < 0 and entry_time > 24:
                     print("Vui lòng nhập từ 0-24")
