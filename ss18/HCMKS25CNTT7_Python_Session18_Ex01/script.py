@@ -1,112 +1,123 @@
-"""Miniproject"""
-
-# Dữ liệu ban đầu
-orders = [
-    {"id": "HD01", "name": "Dai ly Hoang Long", "price": 45000000, "status": "Paid"},
-    {"id": "HD02", "name": "Tap hoa Minh Thu", "price": 15000000, "status": "Unpaid"},
-]
+# =========================
+# HỆ THỐNG QUẢN LÝ ĐƠN HÀNG ĐẠI LÝ
+# =========================
 
 
-def get_validate_input(prompt: str, input_type: str = "str") -> str:
-    """Nhập và kiểm tra
-
-    Args:
-        prompt (str): Câu hỏi
-        input_type (str, optional): dữ liệu kiểm tra. Defaults to "str".
-
-    Returns:
-        str: trả về
-    """
-    while True:
-        user_input = input(prompt).strip()
-
-        if not user_input:
-            print("Dữ liệu không được để trống")
-            continue
-
-        if input_type == "int":
-            try:
-                value = int(user_input)
-                if value <= 0:
-                    print("Dữ liệu không được âm và bằng 0")
-                    continue
-                return value
-            except ValueError:
-                print("Dữ liệu không hợp lệ. Nhập lại")
-                continue
-        return user_input
-
-
-def display_menu() -> str:
-    """Hiển thị menu
-
-    Returns:
-        str: trả về giá trị
-    """
-
-    print(
-        f"{'='*50}\n"
-        f"{"QUẢN LÝ ĐƠN HÀNG - AGENT ORDER":^50}\n"
-        f"{'='*50}\n"
-        "1. Xem danh sách đơn hàng hiện có\n"
-        "2. Tạo mới đơn hàng đại lý\n"
-        "3. Cập nhật trạng thái thanh toán\n"
-        "4. Tính tổng doanh thu & Chiết khấu\n"
-        "5. Thoát chương trình\n"
-        f"{'='*50}"
-    )
-    return input("Bạn chọn 1-5: ")
-
-
-def display_list(my_list: list) -> str:
-    """Hiện thành phần trong mảng
-
-    Args:
-        my_list (list): list hiện
-
-    Returns:
-        str: trả về print
-    """
-    for order in my_list:
+def display_orders(orders):
+    """Hiển thị danh sách đơn hàng dưới dạng bảng"""
+    if not orders:
+        print("Danh sách đơn hàng trống!")
+        return
+    print(f"{'Mã đơn':<10}{'Tên đại lý':<25}{'Giá trị':>15}{'Trạng thái':>10}")
+    print("-" * 60)
+    for order in orders:
         print(
-            f"{order.get("id", "Lỗi"):<7} | "
-            f"{order.get("name", "Lỗi"):<20} | "
-            f"{order.get("price", "Lỗi"):<15} | "
-            f"{order.get("status", "Lỗi"):<10} |"
+            f"{order['id']:<10}{order['name']:<25}{order['price']:>15,}{order['status']:>10}"
         )
 
 
-def display_order():
-    """Xem danh sách hàng"""
-    if not orders:
-        print("Hệ thống hiện chưa có đơn nào!")
-        return
+def add_order(orders):
+    """Thêm mới đơn hàng"""
+    while True:
+        order_id = input("Nhập mã đơn hàng: ").strip()
+        if not order_id:
+            print("Mã đơn hàng không được để trống!")
+            continue
+        if any(o["id"] == order_id for o in orders):
+            print("ERR-01: Mã đơn hàng đã tồn tại, hủy thao tác.")
+            return
+        break
 
-    title = f"{'MÃ ĐƠN':<7} | {'TÊN ĐẠI LÝ':<20} | {'GIÁ TRỊ (VNĐ)':<15} | {'TRẠNG THÁI':<10} |"
-    print("--- DANH SÁCH ĐƠN HÀNG ĐẠI LÝ ---")
-    print(title)
-    print("-" * len(title))
-    display_list(orders)
+    while True:
+        name = input("Nhập tên đại lý: ").strip()
+        if not name:
+            print("Tên đại lý không được để trống!")
+            continue
+        break
+
+    while True:
+        try:
+            price = int(input("Nhập giá trị đơn hàng: "))
+            if price <= 0:
+                print("Giá trị phải lớn hơn 0!")
+                continue
+            break
+        except ValueError:
+            print("Giá trị phải là số nguyên!")
+
+    orders.append({"id": order_id, "name": name, "price": price, "status": "Unpaid"})
+    print("Thêm đơn hàng thành công!")
+
+
+def update_order_status(orders):
+    """Cập nhật trạng thái thanh toán"""
+    order_id = input("Nhập mã đơn hàng cần cập nhật: ").strip()
+    for order in orders:
+        if order["id"] == order_id:
+            if order["status"] == "Unpaid":
+                order["status"] = "Paid"
+                print("Cập nhật trạng thái thành công!")
+                return
+            else:
+                print("ERR-04: Đơn hàng đã thanh toán trước đó.")
+                return
+    print("ERR-03: Không tìm thấy mã đơn hàng.")
+
+
+def calculate_revenue(orders):
+    """Tính tổng doanh thu và chiết khấu"""
+    total = sum(o["price"] for o in orders if o["status"] == "Paid")
+    discount_percent = 5 if total >= 100_000_000 else 0
+    discount_amount = total * discount_percent / 100
+    return total, discount_percent, discount_amount
+
 
 def main():
-    """Thực thi chức năng"""
-    while True:
-        choice = display_menu()
+    orders = [
+        {
+            "id": "HD01",
+            "name": "Dai ly Hoang Long",
+            "price": 45000000,
+            "status": "Paid",
+        },
+        {
+            "id": "HD02",
+            "name": "Tap hoa Minh Thu",
+            "price": 15000000,
+            "status": "Unpaid",
+        },
+    ]
 
-        match choice:
-            case "1":
-                display_order()
-            case "2":
-                print()
-            case "3":
-                print()
-            case "4":
-                print()
-            case "5":
-                print("Đã thoát")
-                break
-            case _:
-                print("Vui lòng nhập 1-5")
+    while True:
+        print("\n===== MENU QUẢN LÝ ĐƠN HÀNG =====")
+        print("1. Xem danh sách đơn hàng")
+        print("2. Tạo mới đơn hàng")
+        print("3. Cập nhật trạng thái thanh toán")
+        print("4. Tính tổng doanh thu & chiết khấu")
+        print("5. Thoát chương trình")
+
+        try:
+            choice = int(input("Nhập lựa chọn: "))
+        except ValueError:
+            print("Vui lòng nhập số từ 1-5!")
+            continue
+
+        if choice == 1:
+            display_orders(orders)
+        elif choice == 2:
+            add_order(orders)
+        elif choice == 3:
+            update_order_status(orders)
+        elif choice == 4:
+            total, percent, discount = calculate_revenue(orders)
+            print(f"Tổng doanh thu: {total:,} VND")
+            print(f"Chiết khấu: {percent}%")
+            print(f"Số tiền chiết khấu: {discount:,} VND")
+        elif choice == 5:
+            print("Cảm ơn bạn đã sử dụng hệ thống. Tạm biệt!")
+            break
+        else:
+            print("Lựa chọn không hợp lệ, vui lòng nhập lại.")
 
 
 if __name__ == "__main__":
