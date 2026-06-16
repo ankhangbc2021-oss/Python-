@@ -35,7 +35,7 @@ import math
 # hoặc
 from math import ceil
 ```
-### 4. Edge Cases được xử lý
+## 4. Edge Cases được xử lý
 ---
 - **Trùng mã chuyến bay**: Không cho thêm mới, báo lỗi ngay.
 - **Sai định dạng thời gian**: Bẫy ValueError, báo lỗi và yêu cầu nhập lại.
