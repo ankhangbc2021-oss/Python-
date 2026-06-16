@@ -1,8 +1,6 @@
 # HỆ THỐNG QUẢN LÝ LỊCH TRÌNH BAY - RIKKEI AVIATION
 
 ## 1. Cấu trúc cây thư mục (Folder Tree)
-
----
 ```folder tree
 rikkei_aviation/
 ├── core/
@@ -35,8 +33,7 @@ import math
 # hoặc
 from math import ceil
 ```
-### 4. Edge Cases được xử lý
----
+## 4. Edge Cases được xử lý
 - **Trùng mã chuyến bay**: Không cho thêm mới, báo lỗi ngay.
 - **Sai định dạng thời gian**: Bẫy ValueError, báo lỗi và yêu cầu nhập lại.
 - **Trùng thư mục log**: Nếu đã tồn tại thì bỏ qua, không văng lỗi.
