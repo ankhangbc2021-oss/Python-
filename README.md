@@ -1,4 +1,8 @@
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+</p>
 # 🐍 Python Learning & Assignment Repository
 
 > Repository dùng để lưu trữ toàn bộ bài tập, project nhỏ và quá trình tự học Python từ cơ bản đến nâng cao.
