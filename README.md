@@ -1,3 +1,4 @@
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 # 🐍 Python Learning & Assignment Repository
 
 > Repository dùng để lưu trữ toàn bộ bài tập, project nhỏ và quá trình tự học Python từ cơ bản đến nâng cao.
@@ -47,4 +48,4 @@ Trong quá trình sử dụng repo này, mình hướng tới:
 
 ## 📁 Cấu trúc thư mục
 
-Repo được chia theo từng chủ đề để dễ quản lý:
+Repo được chia theo từng session để dễ quản lý:
