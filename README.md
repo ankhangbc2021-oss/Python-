@@ -1,6 +1,10 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
 </p>
+<div style="background-color: #8080ef; color: white; padding: 5px 10px; text-align: center; width: 100px; font-weight: bold; border-radius: 5px; margin: auto">
+    Mạnh Khang
+</div>
+
 # 🐍 Python Learning & Assignment Repository
 
 > Repository dùng để lưu trữ toàn bộ bài tập, project nhỏ và quá trình tự học Python từ cơ bản đến nâng cao.
