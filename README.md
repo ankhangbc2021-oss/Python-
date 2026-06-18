@@ -51,4 +51,4 @@ Trong quá trình sử dụng repo này, mình hướng tới:
 
 ## 📁 Cấu trúc thư mục
 
-Repo được chia theo từng session để dễ quản lý:
+Repo được chia theo từng session để dễ xem
