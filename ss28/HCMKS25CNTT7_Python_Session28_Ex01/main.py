@@ -12,7 +12,7 @@ def display_menu() -> str | int:
 5. Tìm kiếm sản phẩm theo tên
 6. Thoát
 =====================================""")
-    return input("Nhập lựa chọn của bạn")
+    return input("Nhập lựa chọn của bạn: ")
 
 
 def get_input_validate(prompt: str, _type: str = "text") -> str | int:
@@ -164,6 +164,9 @@ class ProductManager:
             list_show = self.products
         else:
             list_show = target
+        if not list_show:
+            print("Danh sách rỗng")
+            return
         title = (
             f"|{"Mã SP":<10} | {"Tên sản phẩm":<20} | "
             + f"{"Giá nhập":<20} | {"Số lượng":<10} | "
@@ -171,7 +174,7 @@ class ProductManager:
             + f"{"Trạng thái tồn":<15}|"
         )
         print("=" * len(title))
-        print(f"{"Danh sách sản phẩm":^135.upper()}")
+        print(f"{"Danh sách sản phẩm".upper():^135}")
         print("=" * len(title))
         for product in list_show:
             print(
