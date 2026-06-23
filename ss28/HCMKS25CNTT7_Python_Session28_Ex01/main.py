@@ -192,6 +192,14 @@ class ProductManager:
         for product in self.products:
             if getattr(product, "id") == p_id:
                 print(f"Đã tìm thấy sản phẩm có mã: {getattr(product, "id")}")
+                
+
+    def delete_product(self):
+        """Xóa SP"""
+        p_id = get_input_validate("Nhập mã sản phẩm cần xóa: ")
+        for product in self.products:
+            if getattr(product, "id") == p_id:
+                print(f"Đã tìm thấy sản phẩm có mã: {getattr(product, "id")}")
                 while True:
                     choice_update = get_input_validate(
                         "Bạn có chắc muốn xóa sản phẩm này khỏi hệ thống không? (Y/N): "
@@ -206,9 +214,6 @@ class ProductManager:
                     else:
                         print("Vui lòng nhập (Y/N)")
         print("Không tìm thấy")
-
-    def delete_product(self):
-        """Xóa SP"""
 
     def search_product(self):
         """Tìm SP theo tên"""
